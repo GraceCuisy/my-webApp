@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no,
+minimum-scale=1.0,maximum-scale=1.0">
+  <title>swiper-基础版</title>
+  <style>
+    *{
+      padding:0;
+      margin:0;
+    }
+    html,body{
+      width:100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    #wrap{
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      /* background-color: pink; */
+    }
+    .slide-area{
+      width:100%;
+    }
+    .slide-area .list{
+      width:500%;
+      list-style: none;
+    }
+    .slide-area .list li{
+      width:20%;
+      float: left;
+    }
+    .slide-area .list li img{
+      display: block;
+      width:100%;
+    }
+  </style>
+</head>
+<body>
+  <!-- wrap最外层容器 -->
+  <div id="wrap">
+    <!-- 滑屏区域 -->
+    <div class="slide-area">
+      <!-- 滑屏元素 -->
+      <ul class="list">
+        <li><img src="./img/1.jpg"></li>
+        <li><img src="./img/2.jpg"></li>
+        <li><img src="./img/3.jpg"></li>
+        <li><img src="./img/4.jpg"></li>
+        <li><img src="./img/5.jpg"></li>
+      </ul>
+    </div>
+  </div>
+<script type="text/javascript" >
+  // 使用rem+百分比布局
+  (function(){
+    var w=document.documentElement.clientWidth/16;
+    var styleNode=document.createElement('style');
+    styleNode.innerHTML='html{font-size:'+w+'px!important}';
+    document.head.appendChild(styleNode);
+  })()
+  // 禁止移动端的默认行为
+  var wrapNode=document.querySelector('#wrap');
+  wrapNode.addEventListener('touchstart',function(event){
+    event=event || window.event;
+    event.preventDefault;
+  })
+</script>
+</body>
+</html>

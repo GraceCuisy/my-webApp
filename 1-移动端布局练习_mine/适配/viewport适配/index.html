@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0"/>
+		<title></title>
+		<style type="text/less">
+			/* 定义混合 */
+			.bg(@url){
+				background-image:url("@{url}@2x.png");
+				@media only screen and (-webkit-device-pixel-ratio:3){
+					background-image:url("@{url}@3x.png");
+				}
+			}
+			
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+				overflow: hidden;
+			}
+			#wrap{
+				width: 100%;
+				height:100%;
+				overflow: hidden;
+				.header{
+					width:100%;
+					height:268px;
+					background-color: gray;
+					.header-t{
+						box-sizing: border-box;
+						overflow: hidden;
+						width:100%;
+						height:212px;
+						.logo{
+							float: left;
+							/* 64css像素 
+							 在像素比为2  对应物理像素 128像素
+							 在像素比为3  对应物理像素 192像素
+							 在像素比为4  对应物理像素 256像素
+							 图片位图像素256px  对于像素比2,3 浪费
+							 */
+							width:128px;
+							height:128px;
+							margin:48px 32px 36px 48px;
+							img{
+								width:100%;
+								height:100%;
+								border-radius: 4px;
+							}
+						}
+						.header-t-r{
+							float: left;
+							.title{
+								margin-top:52px;
+								.brand{
+									display: inline-block;
+									/* 30css像素
+									 在像素比为2  对应物理像素 60像素
+									 在像素比为3  对应物理像素 90像素
+									 在像素比为4  对应物理像素 120像素
+									 给不同像素比匹配不同图片
+									 */
+									width:60px;
+									height:36px;
+									/* background: url(img/brand@2x.png); */
+									.bg("img/brand");
+									background-size: 100%;
+									background-repeat: no-repeat;
+									vertical-align: middle;
+									margin-top: 4px;
+								}
+								.title-r{
+									margin-left: 12px;
+									font-size: 32px;
+									color:#fff;
+									font-weight: bold;
+									line-height: 36px;
+									vertical-align: middle;
+								}
+							}
+							.server{
+								margin-top: 16px;
+								font-size: 24px;
+								color:#fff;
+								font-weight: 200;
+								line-height: 24px;
+							}
+							.discount{
+								font-size: 0px;
+								margin-top: 20px;
+								.decrease{
+									display: inline-block;
+									width:24px;
+									height:24px;
+									/* background: url(img/decrease_1@2x.png); */
+									.bg("img/decrease_1");
+									background-size: 100%;
+									background-repeat: no-repeat;
+									vertical-align: middle;
+									margin-right: 8px;
+								}
+								.discount-info{
+									font-size: 20px;
+									color:#fff;
+									font-weight: 200;
+									line-height: 24px;
+									vertical-align: middle;
+								}
+							}
+						}	
+						
+					}
+					.header-b{
+						width:100%;
+						height:56px;
+						background-color: rgba(7,17,27,0.2);
+					}
+				}
+				.nav{
+					width:100%;
+					height:80px;
+					.item{
+						width:33.33%;
+						text-align: center;
+						line-height: 80px;
+						float:left;
+						/* background:hotpink; */
+						a{
+							font-size: 28px;
+							text-decoration: none;
+							color:rgb(77,85,93);
+							line-height: 28px;
+						}
+					}
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div class="header">
+				<div class="header-t">
+					<div class="logo">
+						<img src="./img/avatar.jpg" >
+					</div>
+					<div class="header-t-r">
+						<div class="title">
+							<i class="brand"></i>
+							<span class="title-r">粥品香坊(大运村)</span>
+						</div>
+						<div class="server">蜂鸟专送 / 38分钟送达</div>
+						<div class="discount">
+							<i class="decrease"></i>
+							<span class="discount-info">在线支付满28减5,满50减10</span>
+						</div>
+					</div>
+				</div>
+				<div class="header-b"></div>
+			</div>
+			<div class="nav">
+				<div class="item">
+					<a href="javascript:;">商品</a>
+				</div>
+				<div class="item">
+					<a href="javascript:;">评价</a>
+				</div>
+				<div class="item">
+					<a href="javascript:;">商家</a>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+	<script src="https://cdn.bootcdn.net/ajax/libs/less.js/3.11.1/less.min.js"></script>
+	<script type="text/javascript">
+		// 使用系统缩放进行适配
+		(function(){
+			// 设计图宽度
+			const targetW=750;
+			// 拿到当前屏幕下的理想视图宽度
+			const layoutW=document.documentElement.clientWidth;
+			// 求出系统缩放比例
+			const scale=layoutW/targetW;
+			// 拿到meta标签
+			const metaNode=document.querySelector("meta[name=viewport]");
+			// 设置meta标签的值为适配后之后的值
+			metaNode.content=`initial-scale=${scale},user-scalable=no,minimum-scale=${scale},maximum-scale=${scale}`
+		})()
+	</script>
+</html>

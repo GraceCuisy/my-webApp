@@ -1,0 +1,26 @@
+.swiper-wrap{width:100%;position: relative;}
+.swiper-wrap .list{overflow: hidden;list-style: none;position: absolute;
+left:0;top:0;}
+.swiper-wrap .list li{float:left;font-size:0};
+.swiper-wrap .list li img{
+  display: block;
+}
+.swiper-wrap .point-wrap{
+  font-size: 0;
+  position: absolute;
+  z-index: 9;
+  left:50%;
+  transform: translateX(-50%);
+  bottom:0;
+}
+.swiper-wrap .point-wrap span{
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background-color:#333;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+.swiper-wrap .point-wrap span.active{
+  background-color: red;
+}

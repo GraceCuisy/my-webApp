@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0"/>
+		<title></title>
+		<style type="text/less">
+			/* 定义混合 */
+			.bg(@url){
+				background-image:url("@{url}@2x.png");
+				@media only screen and (-webkit-device-pixel-ratio:3){
+					background-image:url("@{url}@3x.png");
+				}
+			}
+			
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+				overflow: hidden;
+			}
+			#wrap{
+				width: 100%;
+				height:100%;
+				overflow: hidden;
+				.header{
+					width:100%;
+					height:134px;
+					background-color: gray;
+					.header-t{
+						overflow: hidden;
+						width:100%;
+						height:106px;
+						.logo{
+							float: left;
+							/* 64css像素 
+							 在像素比为2  对应物理像素 128像素
+							 在像素比为3  对应物理像素 192像素
+							 在像素比为4  对应物理像素 256像素
+							 图片位图像素256px  对于像素比2,3 浪费
+							 */
+							width:64px;
+							height:64px;
+							margin:24px 16px 18px 24px;
+							img{
+								width:100%;
+								height:100%;
+								border-radius: 2px;
+							}
+						}
+						.header-t-r{
+							float: left;
+							.title{
+								margin-top:26px;
+								.brand{
+									display: inline-block;
+									/* 30css像素
+									 在像素比为2  对应物理像素 60像素
+									 在像素比为3  对应物理像素 90像素
+									 在像素比为4  对应物理像素 120像素
+									 给不同像素比匹配不同图片
+									 */
+									width:30px;
+									height:18px;
+									/* background: url(img/brand@2x.png); */
+									.bg("img/brand");
+									background-size: 100%;
+									background-repeat: no-repeat;
+									vertical-align: middle;
+									margin-top: 2px;
+								}
+								.title-r{
+									margin-left: 6px;
+									font-size: 16px;
+									color:#fff;
+									font-weight: bold;
+									line-height: 18px;
+									vertical-align: middle;
+								}
+							}
+							.server{
+								margin-top: 8px;
+								font-size: 12px;
+								color:#fff;
+								font-weight: 200;
+								line-height: 12px;
+							}
+							.discount{
+								font-size: 0px;
+								margin-top: 10px;
+								.decrease{
+									display: inline-block;
+									width:12px;
+									height:12px;
+									/* background: url(img/decrease_1@2x.png); */
+									.bg("img/decrease_1");
+									background-size: 100%;
+									background-repeat: no-repeat;
+									vertical-align: middle;
+									margin-right: 4px;
+								}
+								.discount-info{
+									font-size: 10px;
+									color:#fff;
+									font-weight: 200;
+									line-height: 12px;
+									vertical-align: middle;
+								}
+							}
+						}	
+						
+					}
+					.header-b{
+						width:100%;
+						height:28px;
+						background-color: rgba(7,17,27,0.2);
+					}
+				}
+				.nav{
+					width:100%;
+					height:40px;
+					.item{
+						width:33.33%;
+						text-align: center;
+						line-height: 40px;
+						float:left;
+						/* background:hotpink; */
+						a{
+							text-decoration: none;
+							color:rgb(77,85,93);
+							line-height: 14px;
+						}
+					}
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div class="header">
+				<div class="header-t">
+					<div class="logo">
+						<img src="./img/avatar.jpg" >
+					</div>
+					<div class="header-t-r">
+						<div class="title">
+							<i class="brand"></i>
+							<span class="title-r">粥品香坊(大运村)</span>
+						</div>
+						<div class="server">蜂鸟专送 / 38分钟送达</div>
+						<div class="discount">
+							<i class="decrease"></i>
+							<span class="discount-info">在线支付满28减5,满50减10</span>
+						</div>
+					</div>
+				</div>
+				<div class="header-b"></div>
+			</div>
+			<div class="nav">
+				<div class="item">
+					<a href="javascript:;">商品</a>
+				</div>
+				<div class="item">
+					<a href="javascript:;">评价</a>
+				</div>
+				<div class="item">
+					<a href="javascript:;">商家</a>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+	<script src="https://cdn.bootcdn.net/ajax/libs/less.js/3.11.1/less.min.js"></script>
+</html>

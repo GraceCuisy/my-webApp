@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0"/>
+		<title></title>
+		<style type="text/less">
+			/* 定义1rem对应多少位图像素 */
+			@rem:750/16rem;
+			/* 定义混合 */
+			.bg(@url){
+				background-image:url("@{url}@2x.png");
+				@media only screen and (-webkit-device-pixel-ratio:3){
+					background-image:url("@{url}@3x.png");
+				}
+			}
+			
+			*{
+				margin:0;
+				padding:0;
+			}
+			html,body{
+				width:100%;
+				height:100%;
+				overflow: hidden;
+			}
+			#wrap{
+				width: 100%;
+				height:100%;
+				overflow: hidden;
+				.header{
+					width:100%;
+					height:268/@rem;
+					background-color: gray;
+					.header-t{
+						box-sizing: border-box;
+						overflow: hidden;
+						width:100%;
+						height:212/@rem;
+						.logo{
+							float: left;
+							/* 64css像素 
+							 在像素比为2  对应物理像素 128像素
+							 在像素比为3  对应物理像素 192像素
+							 在像素比为4  对应物理像素 256像素
+							 图片位图像素256/@rem  对于像素比2,3 浪费
+							 */
+							width:128/@rem;
+							height:128/@rem;
+							margin:48/@rem 32/@rem 36/@rem 48/@rem;
+							img{
+								width:100%;
+								height:100%;
+								border-radius: 4/@rem;
+							}
+						}
+						.header-t-r{
+							float: left;
+							.title{
+								margin-top:52/@rem;
+								.brand{
+									display: inline-block;
+									/* 30css像素
+									 在像素比为2  对应物理像素 60像素
+									 在像素比为3  对应物理像素 90像素
+									 在像素比为4  对应物理像素 120像素
+									 给不同像素比匹配不同图片
+									 */
+									width:60/@rem;
+									height:36/@rem;
+									/* background: url(img/brand@2x.png); */
+									.bg("img/brand");
+									background-size: 100%;
+									background-repeat: no-repeat;
+									vertical-align: middle;
+									margin-top: 4/@rem;
+								}
+								.title-r{
+									margin-left: 12/@rem;
+									font-size: 32/@rem;
+									color:#fff;
+									font-weight: bold;
+									line-height: 36/@rem;
+									vertical-align: middle;
+								}
+							}
+							.server{
+								margin-top: 16/@rem;
+								font-size: 24/@rem;
+								color:#fff;
+								font-weight: 200;
+								line-height: 24/@rem;
+							}
+							.discount{
+								font-size: 0/@rem;
+								margin-top: 20/@rem;
+								.decrease{
+									display: inline-block;
+									width:24/@rem;
+									height:24/@rem;
+									/* background: url(img/decrease_1@2x.png); */
+									.bg("img/decrease_1");
+									background-size: 100%;
+									background-repeat: no-repeat;
+									vertical-align: middle;
+									margin-right: 8/@rem;
+								}
+								.discount-info{
+									font-size: 20/@rem;
+									color:#fff;
+									font-weight: 200;
+									line-height: 24/@rem;
+									vertical-align: middle;
+								}
+							}
+						}	
+						
+					}
+					.header-b{
+						width:100%;
+						height:56/@rem;
+						background-color: rgba(7,17,27,0.2);
+					}
+				}
+				.nav{
+					width:100%;
+					height:80/@rem;
+					.item{
+						width:33.33%;
+						text-align: center;
+						line-height: 80/@rem;
+						float:left;
+						/* background:hotpink; */
+						a{
+							font-size: 28/@rem;
+							text-decoration: none;
+							color:rgb(77,85,93);
+							line-height: 28/@rem;
+						}
+					}
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div class="header">
+				<div class="header-t">
+					<div class="logo">
+						<img src="./img/avatar.jpg" >
+					</div>
+					<div class="header-t-r">
+						<div class="title">
+							<i class="brand"></i>
+							<span class="title-r">粥品香坊(大运村)</span>
+						</div>
+						<div class="server">蜂鸟专送 / 38分钟送达</div>
+						<div class="discount">
+							<i class="decrease"></i>
+							<span class="discount-info">在线支付满28减5,满50减10</span>
+						</div>
+					</div>
+				</div>
+				<div class="header-b"></div>
+			</div>
+			<div class="nav">
+				<div class="item">
+					<a href="javascript:;">商品</a>
+				</div>
+				<div class="item">
+					<a href="javascript:;">评价</a>
+				</div>
+				<div class="item">
+					<a href="javascript:;">商家</a>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+	<script src="https://cdn.bootcdn.net/ajax/libs/less.js/3.11.1/less.min.js"></script>
+	<script type="text/javascript">
+		// 使用rem的方式进行适配 图片仍然是最佳显示 1位图像素=1物理像素
+		(function(){ 
+			const styleNode=document.createElement('style');
+			// 得到1rem对应的css像素
+			const w=document.documentElement.clientWidth/16
+			styleNode.innerHTML=`html{font-size:${w}px!important}`
+			document.head.appendChild(styleNode);
+		})()
+	</script>
+</html>
